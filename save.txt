@@ -1,0 +1,1 @@
+{"lastMove":2, "MarkovChain":[[0.2, 0.6, 0.2], [0.5, 0, 0.5], [0.333333, 0.333333, 0.333333]], "moveBeforeLast":1, "TimesPlayed":[5, 4, 3]}
