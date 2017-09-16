@@ -2,17 +2,17 @@ extends Node
 
 onready var ui = get_parent().get_node("UI")
 
-var s1 = {"Selection":"",
+onready var s1 = {"Selection":"",
 		"Health":float(100),
 		"Wins":int(),
 		"Mod":null}
 
-var s2 = {"Selection":"",
+onready var s2 = {"Selection":"",
 		"Health":float(100),
 		"Wins":int(),
 		"Mod":null}
 
-var s3 = {"Selection":"",
+onready var s3 = {"Selection":"",
 		"Health":float(100),
 		"Wins":int(),
 		"Mod":null}
@@ -41,9 +41,9 @@ func reset():
 func deal_damage(hand, sel):
 	if hand == "S1" or hand == "S2" or hand == "S3":
 		if sel == "Defend":
-			hand.Health -= 5
+			get_hands()[hand].Health -= 5
 		elif sel == "Grapple":
-			hand.Health -= 10
+			get_hands()[hand].Health -= 10
 		else:
 			return
 	ui.update_health("Player",hand,get_hands()[hand].Health)
@@ -51,3 +51,5 @@ func deal_damage(hand, sel):
 func get_hands():
 	return {"S1":s1,"S2":s2,"S3":s3}
 	
+func get_hands_arr():
+	return ["S1", "S2", "S3"]

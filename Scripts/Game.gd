@@ -48,10 +48,6 @@ func results(playerMove, AIMove):
 			ui.add_tie()
 			return 0
 
-func set_game():
-	var player = get_node("Player").get_health("all")
-	var ai = get_node("AI").get_health("all")
-
 
 func fight():
 	var player_moves = [player.s1.Selection,player.s2.Selection, player.s3.Selection]
@@ -63,14 +59,17 @@ func fight():
 
 	for i in range(3):
 		var res = results(player_moves[i],ai_moves[i])
+		printt(res, player_moves[i], ai_moves[i])
 
 		if res == 1:
 			ui.bg_status(colors[i],true)
+			ai.deal_damage(ai.get_hands_arr()[i],ai_moves[i])
 		elif res == 0:
 			ui.bg_status(colors[i],false)
 		else:
 			ui.bg_status(colors[i],false)
+			player.deal_damage(player.get_hands_arr()[i],player_moves[i])
 
-	ai.update_moves(player_moves[0],player_moves[1],player_moves[2])
-	player.reset()
+	ai.update_moves(player_moves)
+	timer.start()
 	pass

@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=1]
 
-[ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=2]
 [ext_resource path="res://Images/BG_Green_Win.png" type="Texture" id=3]
 [ext_resource path="res://Images/BG_Purple_Win.png" type="Texture" id=4]
@@ -673,7 +673,15 @@ script/script = ExtResource( 25 )
 
 script/script = ExtResource( 26 )
 
-[node name="RPS" type="Node" parent="AI"]
+[node name="RPS1" type="Node" parent="AI"]
+
+script/script = ExtResource( 27 )
+
+[node name="RPS2" type="Node" parent="AI"]
+
+script/script = ExtResource( 27 )
+
+[node name="RPS3" type="Node" parent="AI"]
 
 script/script = ExtResource( 27 )
 

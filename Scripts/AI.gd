@@ -2,9 +2,9 @@ extends Node
 
 onready var ui = get_parent().get_node("UI")
 
-onready var rps = {"S1":get_node("RPS"),
-					"S2":get_node("RPS"),
-					"S3":get_node("RPS")}
+onready var rps = {"S1":get_node("RPS1"),
+					"S2":get_node("RPS2"),
+					"S3":get_node("RPS3")}
 
 var s1 = {"Selection":"",
 		"Health":float(100),
@@ -39,17 +39,18 @@ func get_health(sel):
 
 
 # Update sets the player's move so that it can guess the next player's choice.
-func update_moves(playerS1, playerS2, playerS3):
-	rps.S1.update(playerS1)
-	rps.S2.update(playerS2)
-	rps.S3.update(playerS3)
+func update_moves(playerMoves):
+	rps.S1.update(playerMoves[0])
+	rps.S2.update(playerMoves[1])
+	rps.S3.update(playerMoves[2])
 
 # Sets the ai's move.
 func move():
-	var selection = [rps.S1.move(),rps.S2.move(),rps.S3.move()]
-	s1.Selection = selection[0]
-	s2.Selection = selection[1]
-	s3.Selection = selection[2]
+	s1.Selection = rps.S1.move()
+	s2.Selection = rps.S2.move()
+	s3.Selection = rps.S3.move()
+	
+	var selection = [s1.Selection, s2.Selection, s3.Selection]
 	return selection
 
 func show_selection():
@@ -70,9 +71,9 @@ func reset():
 func deal_damage(hand, sel):
 	if hand == "S1" or hand == "S2" or hand == "S3":
 		if sel == "Defend":
-			hand.Health -= 5
+			get_hands()[hand].Health -= 5
 		elif sel == "Grapple":
-			hand.Health -= 10
+			get_hands()[hand].Health -= 10
 		else:
 			return
 			
@@ -81,6 +82,9 @@ func deal_damage(hand, sel):
 
 func get_hands():
 	return {"S1":s1,"S2":s2,"S3":s3}
+	
+func get_hands_arr():
+	return ["S1", "S2", "S3"]
 	
 func reveal():
 	var hands = [s1,s2,s3]

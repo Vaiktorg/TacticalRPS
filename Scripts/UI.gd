@@ -96,7 +96,10 @@ func player_win(color):
 func player_loss(color):
 	bg_status(color,false)
 	add_loss()
-
+    
+func player_ties(color):
+    bg_status(color,false)
+    add_tie()
 # ---------- Player Signals ----------
 
 func _on_Player_S1_pressed():

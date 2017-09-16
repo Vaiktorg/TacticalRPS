@@ -12,14 +12,6 @@ func _ready():
 	markovChain = [[.33, .33, .33],[.33, .33, .33], [.33, .33, .33]]
 	timesPlayed = [0,0,0]
 	
-#	load_data()
-
-#func playerMove():
-#	randomize()
-#	var selection = rand_range(0,2)
-#	var throws = ["Defend","Grapple","Attack"]
-#	var player = throws[selection]
-#	return player
 
 func move():
 	var randFloat = randf()
@@ -38,7 +30,8 @@ func update(newMove):
 		lastMove = 1
 	else:
 		lastMove = 2
-
+	print("Move Updated")
+	
 # Here comes the hard part: updating the Markov Chain
 	 #1. Multiply everything in the appropriate column of the Markov Chain by timesPlayed[moveBeforeLast]
 	 #2. Increment the row value we want (that is, markovChain[moveBeforeLast][lastMove] by one
